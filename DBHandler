@@ -1,0 +1,82 @@
+<?php
+  class DBRequest{
+  	private $DBHost ;
+  	private $DBUsername;
+  	private $DBPassword;
+  	private $DBName;
+          private $connection;
+          private $state;
+  	public $query;
+  	
+  	function DBRequest(){
+  		$this->setDBHost("NONAME-PC\SQLEXPRESS");
+  		$this->setDBUsername("sa");
+  		$this->setDBPassword("1258936547");
+  		$this->setDBName("SRO_VT_ACCOUNT");
+  	}
+  	
+  	private function setDBHost($DBHost) {
+  		$this->DBHost = $DBHost;
+  	}
+  	
+  	public function setDBName($DBName) {
+  		$this->DBName = $DBName;
+  	}
+  	
+  	private function setDBUsername($DBUsername) {
+  		$this->DBUsername = $DBUsername;
+  	}
+  	
+  	private function setDBPassword($DBPassword) {
+  		$this->DBPassword = $DBPassword;
+  	}
+  	
+  	public function DBConnection(){
+  		$d = $this->DBName;
+  		$u = $this->DBUsername;
+  		$p = $this->DBPassword;
+  		$h = $this->DBHost;
+  		
+  		$DB = array( "Database"=>$d,"UID"=>$u, "PWD"=>$p);
+  		$this->connection =  sqlsrv_connect( $h, $DB);
+  		if(!$this->connection) {
+  			echo "We Have A Problem In The Connection";
+  			die( print_r( sqlsrv_errors(), true));
+  		}
+  	}
+  	
+  	public function DBClose(){
+                  if($this->connection)
+                      sqlsrv_close($this->connection);
+  	}
+  	
+  	public function prepare($query){
+              return sqlsrv_prepare($this->connection, $query);
+          }
+          public function execute($preparedStatement){
+              
+              if (sqlsrv_execute($preparedStatement) === true) {
+                  return true;
+              } else {
+                  return false;
+              }
+              
+          }
+          
+          public function hasRows($row){
+              $FRows = sqlsrv_has_rows ($row);
+              if($FRows === true)
+                  return true;
+              else
+                  return false;
+          }
+          public function getResult($pre){
+              $result = array();
+              while ($row = sqlsrv_fetch_array($pre, SQLSRV_FETCH_ASSOC)) {
+                 $result[] = $row;
+              }
+              return $result;
+          }
+  	
+  }
+?>
