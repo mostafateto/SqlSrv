@@ -2,7 +2,7 @@
  class helper{
 
  	public function userFormla($userName, $password, $email){
-
+    //$userName,$password,NULL,NULL,NULL,$email,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,3,3,0,0,0
  	}
 
  	public function checkString($String){
