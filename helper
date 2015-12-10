@@ -1,0 +1,21 @@
+<?php
+ class helper{
+
+ 	public function userFormla($userName, $password, $email){
+
+ 	}
+
+ 	public function checkString($String){
+ 		if (preg_match('/[^A-Za-z0-9]/', $String) === 0)
+ 			echo "this is string Correct";
+ 		else
+ 			echo "Rooooooooooooooooooooong";
+ 	}
+
+ 	public function checkEmail($email){
+ 		if (filter_var($email_a, FILTER_VALIDATE_EMAIL))
+ 			return true;
+ 		else
+ 			return false;
+ 	}
+ }
