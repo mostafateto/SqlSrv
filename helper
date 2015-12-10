@@ -7,7 +7,8 @@
  	}
 
  	public function checkString($String){
- 		if (preg_match('/[^A-Za-z0-9]/', $String) === 0)
+ 	 $strLength = strlen ($String);
+ 		if (preg_match('/[^A-Za-z0-9]/', $String) === 0 && $strLength >= 6 && $strLength <= 16)
  			echo "this is string Correct";
  		else
  			echo "Rooooooooooooooooooooong";
