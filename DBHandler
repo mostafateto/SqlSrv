@@ -13,7 +13,7 @@
   	private $query;
   	
   	function DBRequest(){
-  		$this->setDBHost("ESLAM-PC");
+  		$this->setDBHost("HOST");
   		$this->setDBUsername("USERNAME");
   		$this->setDBPassword("PASSWORD");
   		$this->setDBName("DB_NAME");
