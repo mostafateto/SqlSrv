@@ -14,9 +14,9 @@
   	
   	function DBRequest(){
   		$this->setDBHost("ESLAM-PC");
-  		$this->setDBUsername("sa");
-  		$this->setDBPassword("1258936547");
-  		$this->setDBName("SRO_VT_ACCOUNT");
+  		$this->setDBUsername("USERNAME");
+  		$this->setDBPassword("PASSWORD");
+  		$this->setDBName("DB_NAME");
   	}
   	
   	private function setDBHost($DBHost) {
